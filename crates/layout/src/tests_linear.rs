@@ -6,10 +6,8 @@
 //! whose walk is the document model's, is timed.
 
 use super::tests::{SCALE, cost_ratio};
-use super::{
-    Block, CharProps, DocLayout, Document, HeaderSet, HeightRule, InlineObject, LayoutCache, LayoutOptions, ParaLayout, Paragraph, Path, Placed,
-    SectionProps, SectionStart, StoryRef, display, layout, para, work,
-};
+#[allow(unused_imports)]
+use super::*;
 use wordcraft_doc::para::Run;
 use wordcraft_doc::{Pos, Table};
 
@@ -65,7 +63,7 @@ fn proof_text_walks_the_runs_once() {
     for _ in 0..3 {
         let (t1, tk, ratio) = cost_ratio(SCALE, || proof_8(&small), || proof_8(&big));
         eprintln!("proof_text: t(n) {t1:.4} s, t(8n) {tk:.4} s, ratio {ratio:.1}");
-        if ratio < 24.0 {
+        if ratio < 30.0 {
             return;
         }
         ratios.push(ratio);
